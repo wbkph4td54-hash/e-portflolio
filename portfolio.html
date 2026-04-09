@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sayed Abdulla Alsharaf – IT Support Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #F7F8FA;
+    --surface:  #FFFFFF;
+    --card:     #FFFFFF;
+    --line:     #E4E7EC;
+    --line2:    #CBD2DA;
+    --accent:   #1A6BFF;
+    --accent-s: #EDF2FF;
+    --accent-d: #0D4FCC;
+    --text:     #1C2333;
+    --muted:    #6B7A99;
+    --white:    #FFFFFF;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    height: 62px;
+    background: rgba(247,248,250,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+  }
+  .nav-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.18s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-mobile-btn {
+    display: none; background: none; border: none;
+    cursor: pointer; padding: 0.5rem;
+    color: var(--text); font-size: 1.4rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 7rem 2.5rem 5rem;
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 45%; height: 100%;
+    background: linear-gradient(135deg, #EDF2FF 0%, #F0F4FF 100%);
+    clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding-right: 0;
+  }
+  .hero-divider { display: none; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent-s); color: var(--accent);
+    border: 1px solid rgba(26,107,255,0.2);
+    border-radius: 100px;
+    font-size: 0.75rem; font-weight: 600;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; }
+  .hero-name {
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .hero-name span { color: var(--accent); }
+  .hero-role {
+    font-size: 1rem; font-weight: 500;
+    color: var(--muted); margin-bottom: 1.5rem;
+  }
+  .hero-bio {
+    font-size: 0.95rem; color: var(--muted);
+    line-height: 1.85; max-width: 460px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-photo-wrap {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 3px solid var(--line);
+    box-shadow: 0 16px 48px rgba(26,107,255,0.13);
+    background: var(--bg);
+  }
+  .hero-photo-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    display: block;
+  }
+  .hero-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.75rem; width: 100%;
+  }
+  .info-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.25rem 1.4rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .info-card:hover {
+    box-shadow: 0 4px 16px rgba(26,107,255,0.1);
+    border-color: rgba(26,107,255,0.3);
+  }
+  .info-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .info-card-value {
+    font-size: 0.9rem; font-weight: 700; color: var(--text);
+    line-height: 1.3;
+  }
+  .info-card-value .hl { color: var(--accent); }
+  .info-card-sub {
+    font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.75rem 1.6rem; border-radius: 10px;
+    font-size: 0.88rem; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.18s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    border: 1.5px solid var(--accent);
+  }
+  .btn-primary:hover { background: var(--accent-d); border-color: var(--accent-d); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1.5px solid var(--line2);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 5.5rem 2.5rem; }
+  .section.alt { background: var(--white); }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--accent); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  .section-eyebrow::before {
+    content: ''; display: inline-block;
+    width: 1.2rem; height: 2px; background: var(--accent);
+    border-radius: 2px;
+  }
+  .section-title {
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 800; letter-spacing: -0.025em;
+    color: var(--text); margin-bottom: 2.5rem;
+    line-height: 1.15;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .about-card {
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.5rem;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .about-card:hover {
+    border-color: rgba(26,107,255,0.35);
+    box-shadow: 0 4px 16px rgba(26,107,255,0.07);
+  }
+  .about-card-title {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--accent); margin-bottom: 0.85rem;
+  }
+  .about-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+  .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .about-card ul li {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.6;
+    display: flex; gap: 0.55rem; align-items: baseline;
+  }
+  .about-card ul li::before {
+    content: '→'; color: var(--accent);
+    font-size: 0.75rem; flex-shrink: 0; margin-top: 0.1rem;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .skill-card {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.4rem 1.5rem;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .skill-card:hover {
+    border-color: rgba(26,107,255,0.4);
+    box-shadow: 0 6px 20px rgba(26,107,255,0.09);
+    transform: translateY(-2px);
+  }
+  .skill-icon { font-size: 1.7rem; }
+  .skill-name { font-size: 0.92rem; font-weight: 700; color: var(--text); }
+  .skill-detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--muted); line-height: 1.5;
+  }
+
+  /* ── CV ── */
+  .cv-card {
+    background: linear-gradient(135deg, #1A6BFF 0%, #0D4FCC 100%);
+    border-radius: 18px; padding: 2.5rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+    box-shadow: 0 8px 32px rgba(26,107,255,0.25);
+  }
+  .cv-card-name {
+    font-size: 1.4rem; font-weight: 800;
+    color: #fff; margin-bottom: 0.3rem;
+  }
+  .cv-card-sub { font-size: 0.83rem; color: rgba(255,255,255,0.7); }
+  .btn-cv {
+    background: #fff; color: var(--accent);
+    border: 2px solid #fff; font-weight: 700;
+    padding: 0.75rem 1.75rem; border-radius: 10px;
+    font-size: 0.88rem; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    transition: background 0.18s, color 0.18s;
+    white-space: nowrap;
+  }
+  .btn-cv:hover { background: transparent; color: #fff; }
+
+  /* ── VIDEO ── */
+  .video-box {
+    border: 2px dashed var(--line2); border-radius: 18px;
+    padding: 5rem 2rem; text-align: center;
+    background: var(--white);
+  }
+  .video-box .v-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+  .video-box h3 { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+  .video-box p { font-size: 0.88rem; color: var(--muted); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+  }
+  .tcard {
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.75rem;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .tcard:hover {
+    border-color: rgba(26,107,255,0.3);
+    box-shadow: 0 4px 16px rgba(26,107,255,0.07);
+  }
+  .tcard-quote {
+    font-size: 2rem; color: var(--accent); line-height: 1;
+    margin-bottom: 0.75rem; font-weight: 800;
+  }
+  .tcard p {
+    font-size: 0.9rem; color: var(--muted);
+    line-height: 1.8; font-style: italic; margin-bottom: 1.25rem;
+  }
+  .tcard-author { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+  .tcard-role { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+
+  /* ── PROJECTS ── */
+  .projects-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .pcard {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 18px; overflow: hidden;
+    transition: border-color 0.22s, box-shadow 0.22s;
+    display: flex; flex-direction: column;
+  }
+  .pcard:hover {
+    border-color: rgba(26,107,255,0.4);
+    box-shadow: 0 8px 32px rgba(26,107,255,0.1);
+  }
+
+  /* Image sits on top, full width, fixed height */
+  .pcard-img {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pcard-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    padding: 0.5rem;
+  }
+
+  .pcard-body {
+    padding: 1.75rem 2rem;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .pcard-top {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .pcard-tag {
+    display: inline-block;
+    background: var(--accent-s); color: var(--accent);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; border-radius: 100px;
+    border: 1px solid rgba(26,107,255,0.2);
+  }
+  .pcard-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; color: var(--muted);
+  }
+  .pcard-title {
+    font-size: 1.15rem; font-weight: 800;
+    color: var(--text); line-height: 1.2;
+  }
+  .pcard-desc {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.8;
+  }
+  .pcard-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    color: var(--accent); font-size: 0.82rem; font-weight: 600;
+    text-decoration: none; margin-top: 0.25rem;
+    width: fit-content;
+    transition: gap 0.18s;
+  }
+  .pcard-link:hover { gap: 0.65rem; }
+  .pcard-link-arrow { font-size: 1rem; }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .ccard {
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.75rem;
+    text-align: center;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  }
+  .ccard:hover {
+    border-color: rgba(26,107,255,0.35);
+    box-shadow: 0 6px 20px rgba(26,107,255,0.09);
+    transform: translateY(-3px);
+  }
+  .ccard-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+  .ccard-label {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--muted); margin-bottom: 0.4rem;
+  }
+  .ccard-value {
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--accent); text-decoration: none;
+    transition: color 0.18s;
+  }
+  .ccard-value:hover { color: var(--accent-d); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text); color: rgba(255,255,255,0.5);
+    padding: 2rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer p { font-size: 0.78rem; }
+  footer span { color: var(--accent); }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 1; transform: none; transition: opacity 0.55s ease, transform 0.55s ease; }
+  .js-loaded .reveal { opacity: 0; transform: translateY(16px); }
+  .js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .pcard[style*="flex-direction:row"] { flex-direction: column !important; }
+    .pcard[style*="flex-direction:row"] .pcard-img { width: 100% !important; min-width: unset !important; height: 220px !important; border-right: none !important; border-bottom: 1px solid var(--line) !important; }
+  }
+    .hero-inner { flex-direction: column; gap: 2rem; }
+    .hero-left { padding-right: 0; }
+    .hero-right { padding-left: 0; }
+    .hero-divider { display: none; }
+    .hero::before { display: none; }
+    .hero-photo-wrap { width: 260px; height: 280px; }
+    .about-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid, .contact-grid { grid-template-columns: 1fr; }
+    .pcard-img { height: 220px; }
+  }
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .nav-mobile-btn { display: block; }
+    .hero { padding: 6rem 1.25rem 4rem; }
+    .section { padding: 4rem 1.25rem; }
+    .about-grid, .skills-grid, .hero-right { grid-template-columns: 1fr; }
+    .cv-card { padding: 1.75rem; }
+    .pcard-img { height: 180px; }
+    .pcard-body { padding: 1.25rem; }
+    footer { padding: 1.5rem 1.25rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SAYED ABDULLA 202301153</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certificates</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#video">Video</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-mobile-btn" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'; document.querySelector('.nav-links').style.flexDirection = 'column'; document.querySelector('.nav-links').style.position = 'absolute'; document.querySelector('.nav-links').style.top = '62px'; document.querySelector('.nav-links').style.left = '0'; document.querySelector('.nav-links').style.right = '0'; document.querySelector('.nav-links').style.background = '#fff'; document.querySelector('.nav-links').style.padding = '1rem 1.25rem'; document.querySelector('.nav-links').style.borderBottom = '1px solid #E4E7EC'; document.querySelector('.nav-links').style.zIndex = '400';">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">IT Support Specialist</div>
+      <h1 class="hero-name">Sayed<br><span>Abdulla</span><br>Alsharaf</h1>
+      <p class="hero-role">Management Information Systems · Bahrain Polytechnic</p>
+      <p class="hero-bio">
+        A motivated IT student with hands-on knowledge of Windows OS, Microsoft Office 365,
+        and basic networking. Ready to provide reliable end-user support and maintain IT systems
+        in a professional environment.
+      </p>
+      <div class="hero-cta">
+        <a href="#cv" class="btn btn-primary">📄 View My CV</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <img
+          src="https://drive.google.com/thumbnail?id=1llv8ZdqWC2nelfJwqEXx2qXcENKmbpWr&sz=w800"
+          alt="Sayed Abdulla Alsharaf"
+          onerror="this.style.display='none'"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">01 · About</div>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <div class="about-card-title">Who I Am</div>
+        <p>I am a Year 2 student at Bahrain Polytechnic pursuing a Bachelor's degree in Management Information Systems. I combine my academic knowledge with a passion for technology to solve real-world IT problems.</p>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-title">Education</div>
+        <ul>
+          <li>Bachelor of Management IT – Bahrain Polytechnic (2023–Present)</li>
+          <li>Al Noaim Secondary Boys School (2023)</li>
+        </ul>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-title">Languages</div>
+        <ul>
+          <li>Arabic – Native</li>
+          <li>English – Fluent</li>
+        </ul>
+      </div>
+      <div class="about-card reveal">
+        <div class="about-card-title">Availability</div>
+        <ul>
+          <li>Currently residing in Bahrain</li>
+          <li>Available for immediate joining</li>
+          <li>Full-time, In-person</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">02 · Skills</div>
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🖥️</div>
+        <div class="skill-name">Windows OS</div>
+        <div class="skill-detail">Install · Config · Troubleshoot</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-name">Microsoft Office 365</div>
+        <div class="skill-detail">Word · Excel · PowerPoint · Teams</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-name">Basic Networking</div>
+        <div class="skill-detail">Routers · Switches · Wi-Fi</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔧</div>
+        <div class="skill-name">Hardware Support</div>
+        <div class="skill-detail">Desktops · Laptops · Printers</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">👤</div>
+        <div class="skill-name">Active Directory</div>
+        <div class="skill-detail">User Accounts · Permissions</div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-name">Database Basics</div>
+        <div class="skill-detail">System Analysis · SQL Basics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">03 · Certifications</div>
+      <h2 class="section-title">Certifications & Achievements</h2>
+    </div>
+    <div class="pcard reveal" style="flex-direction:row; align-items:stretch;">
+      <div class="pcard-img" style="width:320px; min-width:320px; height:auto; border-bottom:none; border-right:1px solid var(--line);">
+        <img
+          src="https://drive.google.com/thumbnail?id=1-5tvTaE3QMEL39yWdkUfhTeupIMkYhpA&sz=w800"
+          alt="Certificate of Participation – Bahrain Polytechnic Innovation Center"
+          style="object-fit:contain; padding:1rem;"
+          onerror="this.parentElement.innerHTML='<div style=\'color:#6B7A99;font-size:0.85rem;\'>Image unavailable</div>'"
+        >
+      </div>
+      <div class="pcard-body" style="justify-content:center;">
+        <div class="pcard-top">
+          <span class="pcard-tag">Bahrain Polytechnic</span>
+          <span class="pcard-num">January 2026</span>
+        </div>
+        <div class="pcard-title">Certificate of Participation</div>
+        <div class="pcard-desc">Participated in the <strong>From Insight to Idea: Problem Identification & Ideation Workshop</strong> delivered by the Innovation Center at Bahrain Polytechnic. Issued by the Dean of Research & Innovation and the Head of Innovation Centre.</div>
+        <a href="https://drive.google.com/file/d/1-5tvTaE3QMEL39yWdkUfhTeupIMkYhpA/view?usp=drive_link" target="_blank" class="pcard-link">View Certificate <span class="pcard-link-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">04 · CV</div>
+      <h2 class="section-title">My CV</h2>
+    </div>
+    <div class="cv-card reveal">
+      <div>
+        <div class="cv-card-name">Sayed Abdulla Alsharaf</div>
+        <div class="cv-card-sub">Management Information Systems · Bahrain Polytechnic · 2023–Present</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1jPBe7vQAxPU2zLc-a_3ZiQBiCPQfOwzB/view?usp=drive_link" target="_blank" class="btn-cv">📄 View CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">05 · Video</div>
+      <h2 class="section-title">Profile Video</h2>
+    </div>
+    <div class="video-box reveal">
+      <span class="v-icon">🎬</span>
+      <h3>Personal Promotional Video</h3>
+      <p>1–2 minute professional introduction video – coming soon</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">06 · Testimonials</div>
+      <h2 class="section-title">Testimonials</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="tcard reveal">
+        <div class="tcard-quote">"</div>
+        <p>"Add your first testimonial here — ask a professor, supervisor, or mentor to write a few words about you."</p>
+        <div class="tcard-author">Name of Person</div>
+        <div class="tcard-role">Their Title · Institution</div>
+      </div>
+      <div class="tcard reveal">
+        <div class="tcard-quote">"</div>
+        <p>"Add your second testimonial here — it can be from a classmate, colleague, or anyone who has seen your work."</p>
+        <div class="tcard-author">Name of Person</div>
+        <div class="tcard-role">Their Title · Institution</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK SAMPLES -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">07 · Work</div>
+      <h2 class="section-title">Work Samples</h2>
+    </div>
+    <div class="projects-list">
+
+      <!-- P01 -->
+      <div class="pcard reveal">
+        <div class="pcard-img">
+          <img
+            src="https://drive.google.com/thumbnail?id=1XbnNw_AqusfAhYfrNy_q_6_yDVTu7by8&sz=w1200"
+            alt="Multi-Country Network Design screenshot"
+            onerror="this.parentElement.innerHTML='<div style=\'color:#6B7A99;font-size:0.85rem;\'>Image unavailable</div>'"
+          >
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <span class="pcard-tag">Networking</span>
+            <span class="pcard-num">P · 01</span>
+          </div>
+          <div class="pcard-title">Multi-Country Network Design</div>
+          <div class="pcard-desc">Designed and configured a wide-area network (WAN) connecting four countries — UAE, Qatar, Saudi Arabia, and Bahrain — using Cisco Packet Tracer. Each location includes Cisco 2811 routers, 2960 switches, servers, PCs, and laptops with full routing between all sites.</div>
+          <a href="https://drive.google.com/file/d/1XbnNw_AqusfAhYfrNy_q_6_yDVTu7by8/view?usp=drive_link" target="_blank" class="pcard-link">View Project <span class="pcard-link-arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- P02 -->
+      <div class="pcard reveal">
+        <div class="pcard-img">
+          <img
+            src="https://drive.google.com/thumbnail?id=1MvNo1t6N0EBIlTpNd6UGFXJ3bPII6QQH&sz=w1200"
+            alt="StartupBH Youth Guide screenshot"
+            onerror="this.parentElement.innerHTML='<div style=\'color:#6B7A99;font-size:0.85rem;\'>Image unavailable</div>'"
+          >
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <span class="pcard-tag">Web Development</span>
+            <span class="pcard-num">P · 02</span>
+          </div>
+          <div class="pcard-title">StartupBH Youth Guide</div>
+          <div class="pcard-desc">A multi-page website built with HTML, CSS, JavaScript, and Bootstrap to help young Bahraini entrepreneurs register a business, find funding through Tamkeen, and understand legal and financial basics. Includes form validation, animations, and FAQ section.</div>
+          <a href="https://webproject202301153.tiiny.site/" target="_blank" class="pcard-link">View Live Website <span class="pcard-link-arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- P03 -->
+      <div class="pcard reveal">
+        <div class="pcard-img">
+          <img
+            src="https://drive.google.com/thumbnail?id=1mBb_3h7GcUzYLqj1o2XboV6KnhfVjsSd&sz=w1200"
+            alt="Airline Booking System screenshot"
+            onerror="this.parentElement.innerHTML='<div style=\'color:#6B7A99;font-size:0.85rem;\'>Image unavailable</div>'"
+          >
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <span class="pcard-tag">Database</span>
+            <span class="pcard-num">P · 03</span>
+          </div>
+          <div class="pcard-title">Airline Booking System</div>
+          <div class="pcard-desc">Designed a full relational database for an airline booking system using SQL Developer. Includes 13 entities — Flights, Customers, Bookings, Seats, Crew, Payments, and Loyalty Programs — with ERD design, normalized tables, and resolved Many-to-Many relationships using junction tables.</div>
+          <a href="https://drive.google.com/file/d/1mBb_3h7GcUzYLqj1o2XboV6KnhfVjsSd/view?usp=drive_link" target="_blank" class="pcard-link">View Project <span class="pcard-link-arrow">→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">08 · Contact</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="ccard reveal">
+        <span class="ccard-icon">📞</span>
+        <div class="ccard-label">Phone</div>
+        <a href="tel:+97333440779" class="ccard-value">+973 33440779</a>
+      </div>
+      <div class="ccard reveal">
+        <span class="ccard-icon">✉️</span>
+        <div class="ccard-label">Email</div>
+        <a href="/cdn-cgi/l/email-protection#9eacaeacadaeafafabaddeeef1f2e7eafbfdf6f0f7fdb0fcf6" class="ccard-value"><span class="__cf_email__" data-cfemail="5e6c6e6c6d6e6f6f6b6d1e2e3132272a3b3d3630373d703c36">[email&#160;protected]</span></a>
+      </div>
+      <div class="ccard reveal">
+        <span class="ccard-icon">📍</span>
+        <div class="ccard-label">Location</div>
+        <span class="ccard-value" style="cursor:default;">Zinj, Manama, Bahrain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Sayed Abdulla Alsharaf</span> · IT Support Specialist</p>
+  <p>Applying to <span>Era Projects</span> · Bahrain</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.body.classList.add('js-loaded');
+  const obs = new IntersectionObserver(
+    e
