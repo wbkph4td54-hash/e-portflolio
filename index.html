@@ -341,7 +341,6 @@
     box-shadow: 0 8px 32px rgba(26,107,255,0.1);
   }
 
-  /* Image sits on top, full width, fixed height */
   .pcard-img {
     width: 100%;
     height: 280px;
@@ -444,7 +443,6 @@
   @media (max-width: 960px) {
     .pcard[style*="flex-direction:row"] { flex-direction: column !important; }
     .pcard[style*="flex-direction:row"] .pcard-img { width: 100% !important; min-width: unset !important; height: 220px !important; border-right: none !important; border-bottom: 1px solid var(--line) !important; }
-  }
     .hero-inner { flex-direction: column; gap: 2rem; }
     .hero-left { padding-right: 0; }
     .hero-right { padding-left: 0; }
@@ -770,7 +768,7 @@
       <div class="ccard reveal">
         <span class="ccard-icon">✉️</span>
         <div class="ccard-label">Email</div>
-        <a href="/cdn-cgi/l/email-protection#9eacaeacadaeafafabaddeeef1f2e7eafbfdf6f0f7fdb0fcf6" class="ccard-value"><span class="__cf_email__" data-cfemail="5e6c6e6c6d6e6f6f6b6d1e2e3132272a3b3d3630373d703c36">[email&#160;protected]</span></a>
+        <a href="mailto:abdulla.alsharaf2005@gmail.com" class="ccard-value">abdulla.alsharaf2005@gmail.com</a>
       </div>
       <div class="ccard reveal">
         <span class="ccard-icon">📍</span>
@@ -787,7 +785,13 @@
   <p>Applying to <span>Era Projects</span> · Bahrain</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   document.body.classList.add('js-loaded');
   const obs = new IntersectionObserver(
-    e
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
